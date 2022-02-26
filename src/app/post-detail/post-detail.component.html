@@ -1,0 +1,22 @@
+<!--Cabecera-->
+<div class="bg-image h-25">
+  <app-posts-nav></app-posts-nav>
+</div>
+<!-- Contenido -->
+<div class="container contenido mt-4">
+  <div class="card h-100 rounded mb-5" style="width: 100%;">
+    <img class="card-img-top" [src]="post.image">
+    <div class="card-body">
+      <p class="fs-4 card-title">{{post.title | titlecase}}</p>
+      <p class="card-text pt-3">{{post.description}}</p>
+    </div>
+    <div class="text-end">
+      <button class="btn btn-danger m-2" (click)="goBack()">Volver</button>
+  </div>
+    <!--<div class="text-end">
+      <button class="btn btn-danger ml-3">Delete</button>
+    </div>-->
+  </div>
+</div>
+
+

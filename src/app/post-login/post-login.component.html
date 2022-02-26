@@ -1,0 +1,20 @@
+<!--Cabecera-->
+<div class="bg-image h-25">
+  <app-posts-nav></app-posts-nav>
+</div>
+<!-- Contenido -->
+<main class="py-5 bg-light text-center">
+  <div class="container my-5 py-4" style="max-width: 280px;">
+      <form class="needs-validation" (ngSubmit)="compruebaUsuario()">
+          <img class="my-3" src="https://preview.redd.it/an871k4o1sn51.png?width=440&format=png&auto=webp&s=85dcd6cb73b8760802e254ee14dfa3c7ab444591" alt="Logo" width="80px">
+          <h2 class="fw-normal mb-4">Inicio de sesión</h2>
+          <input type="text" id="nombre_usuario" class="form-control rounded-0 mb-2" placeholder="Nombre de usuario" name="nombre_usuario" [(ngModel)]="login.login" required autofocus>
+          <input type="password" id="Pasword" class="form-control rounded-0" placeholder="Contraseña" name="contrasena" [(ngModel)]="login.password" required>
+          <div class="container-flex my-3">
+              <a>¿No tienes cuenta? </a><a [routerLink]="['/posts/registro']"
+              [routerLinkActive]="['active']" href="">Registrate</a>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block mt-3" type="submit">Iniciar sesión</button>
+      </form>
+  </div>
+</main>

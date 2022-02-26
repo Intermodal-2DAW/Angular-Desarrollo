@@ -1,0 +1,24 @@
+<!--Cabecera-->
+<div class="bg-image h-25">
+  <app-posts-nav></app-posts-nav>
+</div>
+<!-- Contenido -->
+<main class="py-5 bg-light">
+  <div class="container mt-2 text-end">
+      <p class="text-center pt-5 fs-1 text-decoration-underline fw-light">BLOG</p>
+      <div class="pb-5">
+        <button class="btn btn-primary" [routerLink]="['/posts/blog/add']"
+        [routerLinkActive]="['active']">AÑADIR BLOG</button>
+      </div>
+  </div>
+  <div class="container">
+    <app-posts-show></app-posts-show>
+  </div>
+</main>
+ <!--BTT-->
+ <section class="container-fluid mt-3 p-3 text-secondary">
+  <div class="text-center">
+      <p class="w-100">Todos los derechos reservados. Queda prohibida la reproducción total o parcial del material protegido por estos derechos de propiedad intelectual, o su uso en cualquier forma, o por cualquier medio, ya sea electrónico o mecánico, incluyendo fotocopiado, grabación, transmisión o cualquier sistema de almacenamiento y recuperación de información, sin un permiso por escrito.</p>
+  </div>
+</section>
+

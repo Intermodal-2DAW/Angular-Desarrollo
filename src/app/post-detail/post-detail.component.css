@@ -1,0 +1,16 @@
+.bg-image{
+  background-image: url(https://i0.wp.com/www.mariajuliana.com/wp-content/uploads/2016/02/Benidorm.jpg?fit=1920%2C1080&ssl=1);
+}
+
+.contenido{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.card{
+  margin-right: 30%;
+  margin-left: 30%;
+  width: 300px;
+}

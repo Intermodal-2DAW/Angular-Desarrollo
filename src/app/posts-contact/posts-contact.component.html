@@ -1,0 +1,47 @@
+<!--Cabecera-->
+<div class="bg-image">
+  <app-posts-nav></app-posts-nav>
+</div>
+<div class="container-fluid mt-4">
+  <img class="img-fluid" src="https://media.traveler.es/photos/61376aa63decec3303bab994/master/w_2000,h_763,c_limit/221626.jpg" width="100%">
+</div>
+<!--Formulario contacto-->
+<main class="py-5 bg-light text-center">
+  <div class="container mt-2">
+      <h3 class="p-5 fs-1 text-decoration-underline fw-light">CONTACTO</h3>
+  </div>
+  <div class="container-sm text-center">
+      <p class="text-muted fs-4 fw-light">Si tienes alguna duda sobre la página y/o las actividades que sea realizan, contacta con nosotros rellenando el siguiente formulario y recibirás una respuesta lo antes posible.</p>
+  </div>
+  <div class="container my-5 py-4 rounded text-start" style="max-width: 600px;">
+      <form class="needs-validation" (ngSubmit)="nuevoContacto()">
+          <div class="row g-3">
+              <div class="col-sm-6">
+                  <label for="nombre" class="form-label">Nombre<span class="text-danger"> *</span></label>
+                  <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="newContact.nombre" required>
+                  <div class="invalid-feedback"> Se requiere de un nombre</div>
+              </div>
+              <div class="col-sm-6">
+                  <label for="email" class="form-label">Correo electrónico<span class="text-danger"> *</span></label>
+                  <input type="email" class="form-control" id="email" name="email" [(ngModel)]="newContact.email" placeholder="ejemplo@ejemplo.com">
+                  <div class="invalid-feedback"> Se requiere una direccion de correo válida</div>
+              </div>
+              <div class="col-sm-12">
+                  <label for="mensaje" class="form-label">Duda o cuestión<span class="text-danger"> *</span><span class="text-muted"> (máx. 200 carácteres)</span></label>
+                  <textarea class="form-control" id="mensaje" rows="5" maxlength="200" name="texto" [(ngModel)]="newContact.texto" required></textarea>
+                  <small class="text-muted pb-5">Los campos que contienen <span class="text-danger">*</span>, son requeridos y necesitan ser rellenados.</small>
+                  <div class="invalid-feedback"> Rellena este campo por favor</div>
+              </div>
+              <div class="col-6">
+                  <button class="btn btn-secondary btn-lg" type="submit">Enviar</button><br>
+              </div>
+          </div>
+      </form>
+  </div>
+</main>
+<!--BTT-->
+<section class="container-fluid mt-3 p-3 text-secondary">
+  <div class="text-center">
+      <p class="w-100">Todos los derechos reservados. Queda prohibida la reproducción total o parcial del material protegido por estos derechos de propiedad intelectual, o su uso en cualquier forma, o por cualquier medio, ya sea electrónico o mecánico, incluyendo fotocopiado, grabación, transmisión o cualquier sistema de almacenamiento y recuperación de información, sin un permiso por escrito.</p>
+  </div>
+</section>

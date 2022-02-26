@@ -1,0 +1,15 @@
+<div class="col mb-4">
+  <div class="card h-100 rounded" style="width: 100%;">
+    <img class="card-img-top" [src]="newpost.image">
+    <div class="card-body">
+      <p class="fs-4 card-title">{{newpost.title | titlecase}}</p>
+      <p class="card-text pt-3">{{newpost.description}}</p>
+    </div>
+    <div class="card-footer container-fluid">
+      <a class="btn btn-warning shadow rounded" [routerLink]="['/posts/blog', newpost.id]">Leer <i class="bi bi-chevron-double-right"></i></a>
+    </div>
+    <!--<div class="text-end">
+      <button class="btn btn-danger ml-3">Delete</button>
+    </div>-->
+  </div>
+</div>

@@ -1,0 +1,25 @@
+/*.contenido{
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+}
+
+.card{
+  margin-right: 5%;
+  margin-bottom: 5%;
+  width: 300px;
+}
+
+.float-right{
+  float: right;
+}
+
+.filtros{
+  float: right;
+  margin-left: 3px;
+}*/
+
+.bg-ímage{
+  height: 25px;
+}
