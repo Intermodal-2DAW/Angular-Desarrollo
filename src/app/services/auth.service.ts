@@ -16,8 +16,8 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-   //Funcion de login
-   login(authData:IToken): Observable<AuthResponse | void>{
+  //Funcion de login
+  login(authData:IToken): Observable<AuthResponse | void>{
     return this.http.post<AuthResponse>(this.loginURL, authData)
     .pipe(
       map((res: AuthResponse)=>{

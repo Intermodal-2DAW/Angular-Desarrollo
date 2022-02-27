@@ -50,4 +50,9 @@ export class PostsPendientesComponent implements OnInit {
     this.ngOnInit();
   }
 
+  eliminaPost(id: number){
+    this.postsService.deletePost(id).subscribe(
+      () => this.ngOnInit()
+    );
+  }
 }

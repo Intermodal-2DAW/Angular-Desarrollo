@@ -13,6 +13,7 @@ export class PostItemPendienteComponent implements OnInit {
 
   @Input() newpost: IPosts;
   @Output() actualiza = new EventEmitter<IPosts>();
+  @Output() elimina = new EventEmitter<number>();
 
   postModificado: IPosts;
 
@@ -35,12 +36,14 @@ export class PostItemPendienteComponent implements OnInit {
   }
 
   aceptaPost(){
+    console.log(this.newpost)
+
     this.newPostModificado = {
       id: this.newpost.id,
       title: this.newpost.title,
       image: this.newpost.image,
       description: this.newpost.description,
-      user_id: +this.idUser!,
+      user_id: this.newpost.user_id,
       ok: 1
     }
 
@@ -56,7 +59,7 @@ export class PostItemPendienteComponent implements OnInit {
   }
 
   deletePost(){
-    this.postsService.deletePost(this.newpost.id || 0).subscribe();
+    this.elimina.emit(this.newpost.id)
   }
 
 }

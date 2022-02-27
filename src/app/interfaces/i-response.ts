@@ -5,6 +5,10 @@ export interface PostResponse {
   post: IPosts;
 }
 
+export interface UserResponse {
+  user: IUsers;
+}
+
 export interface tokenResponse {
   token: string;
 }

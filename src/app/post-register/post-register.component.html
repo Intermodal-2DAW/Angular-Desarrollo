@@ -14,25 +14,25 @@
           <div class="row g-3">
               <div class="col-sm-6">
                   <label for="nombre" class="form-label">Nombre<span class="text-danger"> *</span></label>
-                  <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="newUser.nombre" required>
+                  <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="newUser.name" required>
                   <div class="invalid-feedback"> Se requiere de un nombre</div>
               </div>
               <div class="col-sm-6">
                   <label for="apellido" class="form-label">Apellidos<span class="text-danger"> *</span></label>
-                  <input type="text" class="form-control" id="apellido" name="apellidos" [(ngModel)]="newUser.apellidos" required>
+                  <input type="text" class="form-control" id="apellido" name="apellidos" [(ngModel)]="newUser.lastname" required>
                   <div class="invalid-feedback"> Se requiere de apellidos</div>
               </div>
               <div class="col-sm-12">
                   <label for="usuario" class="form-label">Nombre de usuario<span class="text-danger"> *</span></label>
                   <div class="input-group has-validation">
                       <span class="input-group-text">@</span>
-                      <input type="text" class="form-control" id="username" placeholder="Nombre de usuario" name="nombre_usuario" [(ngModel)]="newUser.nombre_usuario" required>
+                      <input type="text" class="form-control" id="username" placeholder="Nombre de usuario" name="nombre_usuario" [(ngModel)]="newUser.login" required>
                       <div class="invalid-feedback"> Se requiere de un nombre de usuario</div>
                   </div>
               </div>
               <div class="col-sm-12">
                   <label for="password" class="form-label">Contraseña<span class="text-danger"> *</span></label>
-                  <input type="password" class="form-control" id="password" name="contrasena" [(ngModel)]="newUser.contrasena" required>
+                  <input type="password" class="form-control" id="password" name="contrasena" [(ngModel)]="newUser.password" required>
                   <div class="invalid-feedback"> Se requiere de una contraseña</div>
               </div>
               <div class="col-sm-12">

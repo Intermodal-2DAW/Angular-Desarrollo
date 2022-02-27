@@ -14,18 +14,9 @@ export class PostAddComponent implements OnInit {
 
   token! : string | null;
   idUser!:  string | null;
-  aux!: number ;
-  User! : IUsers;
+  aux!: number;
 
-  UserAuth: IUsers = {
-    nombre: "",
-    apellidos: "",
-    nombre_usuario: "",
-    contrasena: "",
-    email: ""
-  }
-
-  newPost = {
+  newPost: IPosts = {
     title: "",
     image: "",
     description: "",
@@ -44,13 +35,14 @@ export class PostAddComponent implements OnInit {
     this.idUser  = localStorage.getItem('id');
     this.aux = +this.idUser!;
     this.newPost.user_id = this.aux;
+    console.log(this.aux)
   }
 
-  addPost(){
+  addBlog(){
     console.log(this.newPost)
 
     this.postsService.addPost(this.newPost).subscribe(
-      post =>  { this.posts.push(this.newPost),
+      post => {this.posts.push(this.newPost),
       this.router.navigate(['/posts/blog'])}
     );
 
@@ -61,7 +53,6 @@ export class PostAddComponent implements OnInit {
       user_id: 0,
       ok: 0
     };
-    console.log(this.newPost)
   }
 
   changeImage(fileInput: HTMLInputElement) {
