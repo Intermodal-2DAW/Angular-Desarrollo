@@ -18,13 +18,8 @@ export class PostRegisterComponent implements OnInit {
     contrasena: "",
     email: ""
   }
-
-  item = {
-    isActive: false
-  }
-
   //item = <HTMLInputElement> document.getElementById("condicinoes");
-
+  crear:boolean = false;
   users: IUsers[] = [];
   constructor(private postsService: PostsService, private titleService: Title, private route: ActivatedRoute, private router: Router,) { }
 
@@ -38,54 +33,46 @@ export class PostRegisterComponent implements OnInit {
 
   }
 
+  valida() {
+    let forms = document.querySelectorAll('.needs-validation')
+
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (e: any) {
+          if (!form.checkValidity()) {
+            e.preventDefault()
+            e.stopPropagation()
+
+          }
+
+          form.classList.add('was-validated')
+
+
+        }, false)
+      })
+  }
+
   addUser(){
-    //this.users.push(this.newUser);
-
-    console.log(this.item)
-    if(this.item.isActive){
-      this.users.push(this.newUser);
-
-    }
     // Validación del formulario
-    (function () {
-      'use strict'
-      let forms = document.querySelectorAll('.needs-validation')
-
-      Array.prototype.slice.call(forms)
-        .forEach(function (form) {
-          form.addEventListener('submit', function (e: any) {
-            if (!form.checkValidity()) {
-              e.preventDefault()
-              e.stopPropagation()
-
-            }
-
-            form.classList.add('was-validated')
-          }, false)
-        })
-      })()
 
 
+    if(this.crear){
+      this.postsService.addUser(this.newUser).subscribe(
+        evento => {
+        this.users.push(this.newUser);
+        this.router.navigate(['/posts']);
 
-    /*this.postsService.addUser(this.newUser).subscribe(
-      evento => {
-      this.router.navigate(['/posts']);
+        this.newUser = {
+          nombre: "",
+          apellidos: "",
+          nombre_usuario: "",
+          contrasena: "",
+          email: ""
+        };
+        }
+      );
+    }
 
-      this.newUser = {
-        nombre: "",
-        apellidos: "",
-        nombre_usuario: "",
-        contrasena: "",
-        email: ""
-      };
-      }
-    );*/
-
-    console.log(this.newUser.nombre)
-    console.log(this.newUser.apellidos)
-    console.log(this.newUser.nombre_usuario)
-    console.log(this.newUser.contrasena)
-    console.log(this.newUser.email)
 
     console.log(this.users)
 

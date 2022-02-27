@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-sm navbar-dark bg-none">
+
+<nav class="navbar navbar-expand-md navbar-dark bg-none">
   <div class="container-fluid">
       <a class="navbar-brand" href="#">
           <img src="https://preview.redd.it/an871k4o1sn51.png?width=440&format=png&auto=webp&s=85dcd6cb73b8760802e254ee14dfa3c7ab444591" alt="Logo-Salva" width="40">
@@ -14,7 +15,7 @@
               </li>
               <li class="nav-item fs-5 ms-2">
                   <a class="nav-link" [routerLink]="['/posts/galeria']"
-                  [routerLinkActive]="['active']">GALERIA</a>
+                  [routerLinkActive]="['active']" >GALERIA</a>
               </li>
               <li class="nav-item fs-5 ms-2">
                 <a class="nav-link" [routerLink]="['/posts/blog']"
@@ -24,18 +25,21 @@
                   <a class="nav-link" [routerLink]="['/posts/contacto']"
                   [routerLinkActive]="['active']">CONTACTO</a>
               </li>
+              <li class="nav-item fs-5 ms-2" [class]="muestraPendientes">
+                <a class="nav-link" [routerLink]="['/posts/blogs-pendientes']"
+                [routerLinkActive]="['active']">BLOGS PENDIENTES</a>
+            </li>
           </ul>
           <!--Parte derecha-->
           <ul class="navbar-nav">
-            <li class="nav-item fs-5 ms-2">
-
+            <li class="nav-item fs-5 ms-2 blanco" [class]="muestraLogin">
               <a class="nav-link link-light fs-5" [routerLink]="['/posts/login']"
               [routerLinkActive]="['active']">Login</a>
             </li>
-              <li class="nav-item fs-5 ms-2">
-                <a class="nav-link link-light fs-5" [routerLink]="['/posts/login']"
-                [routerLinkActive]="['active']" (click)="onLogout()">Logout</a>
-              </li>
+            <li class="nav-item fs-5 ms-2 blanco" [class]="muestraLogout">
+              <a class="nav-link link-light fs-5" [routerLink]="['/posts/login']"
+              [routerLinkActive]="['active']" (click)="onLogout()">Logout</a>
+            </li>
           </ul>
         </div>
     </div>

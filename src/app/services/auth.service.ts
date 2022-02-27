@@ -39,8 +39,11 @@ export class AuthService {
   }
 
   logout(): void{
-    localStorage.removeItem('token')
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    localStorage.removeItem('rol');
+
     //this.loggedIn.next(false)
-    console.log('token supuestamente eliminado')
+    console.log('Token eliminado correctamente!')
   }
 }

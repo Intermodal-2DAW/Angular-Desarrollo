@@ -14,6 +14,7 @@ export class PostItemComponent implements OnInit {
   constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
+
   }
 
 }

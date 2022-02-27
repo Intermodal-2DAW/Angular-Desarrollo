@@ -2,13 +2,15 @@
 <div class="bg-image h-25">
   <app-posts-nav></app-posts-nav>
 </div>
+
+
 <!--Registro-->
 <main class="py-5 bg-light text-center">
   <div class="container mt-2">
       <p class="p-5 fs-1 fw-light">REGISTRO</p>
   </div>
   <div class="container-sm my-5 py-4 rounded text-start" style="max-width: 500px;">
-      <form class="needs-validation" name="formulario" (ngSubmit)="addUser()">
+      <form class="needs-validation" name="formulario" id="formulario">
           <div class="row g-3">
               <div class="col-sm-6">
                   <label for="nombre" class="form-label">Nombre<span class="text-danger"> *</span></label>
@@ -44,10 +46,10 @@
                   <label class="form-check-label" for="newsletter">Registrarse al boletin de noticias para recibir informacion sobre actividades, etc.</label>
               </div>
               <div class="form-check">
-                  <input type="checkbox" class="form-check-input" name="condiciones" id="condiciones" [(ngModel)]="item.isActive" required>
+                  <input type="checkbox" class="form-check-input" name="condiciones" id="condiciones" required>
                   <label class="form-check-label" for="condiciones">He leido y acepto las condiciones legales.<span class="text-danger"> *</span></label>
               </div>
-              <button class="w-100 btn btn-primary btn-lg" type="submit" id="submit">Registrarse</button>
+              <button class="w-100 btn btn-primary btn-lg" type="submit" id="boton-formulario"  (click)="addUser()">Registrarse</button>
               <small class="text-muted">Los campos que contienen <span class="text-danger">*</span>, son requeridos y necesitan ser rellenados.</small>
           </div>
       </form>

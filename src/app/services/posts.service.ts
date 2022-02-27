@@ -28,28 +28,38 @@ export class PostsService {
     return this.http.get<IUsers[]>('posts');
   }*/
 
-  getPostToken(token:IToken): Observable<string> {
-    /*let options= {
+  /*getPostToken(token:IToken): Observable<string> {
+    let options= {
       headers: new HttpHeaders().set('Authorization',localStorage.getItem('token'))
-    };*/
+    };
     return this.http.post<tokenResponse>(this.loginURL, token).pipe(
       catchError((resp: HttpErrorResponse) => throwError(`Error insertando post!. Código de servidor ${resp.status}. Mensaje: ${resp.message}`)),
       map(resp => {
         return resp.token;
       })
     )
+  }*/
+
+  // Modificar post
+  modificarPost(id: number, post: IPosts): Observable<IPosts>  {
+    return this.http.put<PostResponse>(`${this.postURL}/${id}`, post).pipe(
+      catchError((resp: HttpErrorResponse) => throwError(`Error modificando producto!. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`)),
+      map(resp => {
+        return resp.post;
+      })
+    );
   }
 
   // Añadir nuevo post al blog
   addPost(post: IPosts): Observable<IPosts> {
     return this.http.post<PostResponse>(this.postURL, post)
     .pipe(
-      catchError((resp: HttpErrorResponse) => throwError(`Error insertando post!. Código de servidor ${resp.status}. Mensaje: ${resp.message}`)),
+      catchError((resp: HttpErrorResponse) => throwError(`Error insertando producto!. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`)),
       map(resp => {
         return resp.post;
       })
     )
-   }
+  }
 
   // Añadir nuevo usuario
   addUser(user: IUsers): Observable<IUsers> {

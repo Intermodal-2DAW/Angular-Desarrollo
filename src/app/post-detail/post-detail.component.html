@@ -10,9 +10,15 @@
       <p class="fs-4 card-title">{{post.title | titlecase}}</p>
       <p class="card-text pt-3">{{post.description}}</p>
     </div>
-    <div class="text-end">
-      <button class="btn btn-danger m-2" (click)="goBack()">Volver</button>
-  </div>
+    <div class="row">
+      <div class="col-6 text-right" [class]="muestraEliminar">
+          <button class="btn btn-danger m-2" (click)="deletePost()">Delete</button>
+      </div>
+      <div class="col-6 text-end" [class]="botonEnd">
+          <button class="btn btn-warning m-2" (click)="goBack()">Volver</button>
+      </div>
+    </div>
+
     <!--<div class="text-end">
       <button class="btn btn-danger ml-3">Delete</button>
     </div>-->

@@ -16,7 +16,9 @@ import { PostsGalleryComponent } from './posts-gallery/posts-gallery.component';
 import { PostLoginComponent } from './post-login/post-login.component';
 import { PostRegisterComponent } from './post-register/post-register.component';
 import { PostAddComponent } from './post-add/post-add.component';
-import { PostDetailService } from './resolvers/post-detail.service'
+import { PostDetailService } from './resolvers/post-detail.service';
+import { PostsPendientesComponent } from './posts-pendientes/posts-pendientes.component';
+import { PostItemPendienteComponent } from './post-item-pendiente/post-item-pendiente.component';
 
 const APP_ROUTES: Route[] = [
   { path: 'posts', component: PostsHomeComponent },
@@ -26,6 +28,7 @@ const APP_ROUTES: Route[] = [
   { path: 'posts/contacto', component: PostsContactComponent},
   { path: 'posts/login', component: PostLoginComponent},
   { path: 'posts/registro', component: PostRegisterComponent},
+  { path: 'posts/blogs-pendientes', component: PostsPendientesComponent},
   // :id es un parámetro (id del evento)
   { path: 'posts/blog/:id', component: PostDetailComponent, resolve: {post: PostDetailService}},
   // Ruta por defecto (vacía) -> Redirigir a /eventos
@@ -48,6 +51,8 @@ const APP_ROUTES: Route[] = [
     PostLoginComponent,
     PostRegisterComponent,
     PostAddComponent,
+    PostsPendientesComponent,
+    PostItemPendienteComponent,
   ],
   imports: [
     BrowserModule,

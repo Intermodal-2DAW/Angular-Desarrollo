@@ -29,7 +29,8 @@ export class PostAddComponent implements OnInit {
     title: "",
     image: "",
     description: "",
-    user_id: 1
+    user_id: +this.idUser!,
+    ok: 0
   }
 
   posts: IPosts[] = [];
@@ -39,28 +40,9 @@ export class PostAddComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.setTitle('Añadir Blog | Salvador Mira');
 
-    this.token = localStorage.getItem('token')
-    this.idUser  = localStorage.getItem('id')
-    console.log(this.idUser)
+    this.token = localStorage.getItem('token');
+    this.idUser  = localStorage.getItem('id');
 
-    if(this.token != undefined){
-      // this.router.navigate(['eventos/login'])
-
-      this.aux = +this.idUser!;
-      console.log(this.aux)
-
-      /*this.postsService.getUser(this.aux)
-      .subscribe(
-        user => {this.User = user
-        this.UserAuth.login = user.login
-
-      },
-        (error) => console.error(error),
-        () => console.log(this.User)
-      )*/
-    }else{
-      this.router.navigate(['posts/login'])
-    }
   }
 
   addPost(){
@@ -74,7 +56,8 @@ export class PostAddComponent implements OnInit {
       title: "",
       image: "",
       description: "",
-      user_id: 1
+      user_id: +this.idUser!,
+      ok: 0
     };
   }
 

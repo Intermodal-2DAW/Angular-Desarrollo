@@ -1,4 +1,5 @@
 import { IPosts } from "../interfaces/i-posts";
+import { IUsers } from "./i-users";
 
 export interface PostResponse {
   post: IPosts;

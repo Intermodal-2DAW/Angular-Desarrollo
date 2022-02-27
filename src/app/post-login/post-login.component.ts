@@ -24,7 +24,6 @@ export class PostLoginComponent implements OnInit {
     this.titleService.setTitle('Login | Salvador Mira');
 
     this.token = localStorage.getItem('token');
-    console.log(this.token)
 
     if(this.token != undefined){
        this.router.navigate(['/posts'])
@@ -34,11 +33,9 @@ export class PostLoginComponent implements OnInit {
   compruebaUsuario(){
 
     this.authService.login(this.login).subscribe(
-      (res) => console.log('login'),
         () => {
           this.router.navigate(['/posts/blog'])
         }
-
     )
 
     this.login = {
