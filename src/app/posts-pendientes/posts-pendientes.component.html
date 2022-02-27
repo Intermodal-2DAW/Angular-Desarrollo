@@ -5,10 +5,10 @@
 <!-- Contenido -->
 <main class="py-5 bg-light">
   <div class="container mt-2 text-end mb-5">
-      <p class="text-center pt-5 fs-1 text-decoration-underline fw-light">BLOGS PENDIENTES</p>
+      <p class="text-center pt-5 fs-1 fw-light">BLOGS PENDIENTES</p>
   </div>
   <div class="container">
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-5 g-3">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-3 row-cols-xxl-3 g-3">
       <app-post-item-pendiente class="row no-gutters" [newpost]="item" *ngFor="let item of posts"></app-post-item-pendiente>
     </div>
   </div>

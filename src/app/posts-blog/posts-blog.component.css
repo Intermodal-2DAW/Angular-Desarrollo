@@ -1,3 +1,9 @@
 .bg-image{
   background-image: url(https://i0.wp.com/www.mariajuliana.com/wp-content/uploads/2016/02/Benidorm.jpg?fit=1920%2C1080&ssl=1);
 }
+
+.blog {
+  background-image: url("https://wallpaperaccess.com/full/530366.jpg");
+  background-size: cover;
+  background-position: center;
+}

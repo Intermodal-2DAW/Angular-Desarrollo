@@ -2,10 +2,14 @@
 <div class="bg-image h-25">
   <app-posts-nav></app-posts-nav>
 </div>
+ <!--Fondo-->
+ <div class="container-md my-5 p-5 bg-primary text-white text-center blog">
+  <h1 class="fw-light text-light">BLOG DE FOTOGRAFÍA</h1>
+  <p class="text-center text-light fw-light fs-5">Trucos, consejos, tutoriales y mucho más gracias a los aportes de la comunidad</p>
+</div>
 <!-- Contenido -->
-<main class="py-5 bg-light">
-  <div class="container mt-2 text-end">
-      <p class="text-center pt-5 fs-1 text-decoration-underline fw-light">BLOG</p>
+<main class="py-3 bg-light">
+  <div class="container text-end">
       <div class="pb-5">
         <button class="btn btn-primary" [routerLink]="['/posts/blog/add']"
         [routerLinkActive]="['active']" [class]="muestraAnadir">AÑADIR BLOG</button>
