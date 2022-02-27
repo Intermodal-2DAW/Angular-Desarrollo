@@ -19,6 +19,8 @@ export class PostsPendientesComponent implements OnInit {
   rol!: string | null;
   aux!: number ;
 
+  postsFiltrados: IPosts[] = [];
+
   constructor(private route: ActivatedRoute, private router: Router, private postsService: PostsService, private titleService: Title) { }
 
   ngOnInit(): void {
@@ -26,7 +28,9 @@ export class PostsPendientesComponent implements OnInit {
 
     this.postsService.getPosts()
     .subscribe(
-      posts => this.posts = posts,
+      post =>{
+        this.posts = post,
+        this.filtra()}
     );
 
     this.token = localStorage.getItem('token');
@@ -34,6 +38,16 @@ export class PostsPendientesComponent implements OnInit {
     this.rol = localStorage.getItem('rol');
 
     console.log(this.posts)
+  }
+
+  filtra(){
+    this.postsFiltrados = this.posts.filter(element => element.ok == 0);
+    console.log(this.postsFiltrados)
+  }
+
+  actualizaPosts(post : IPosts){
+    this.posts.push(post);
+    this.ngOnInit();
   }
 
 }

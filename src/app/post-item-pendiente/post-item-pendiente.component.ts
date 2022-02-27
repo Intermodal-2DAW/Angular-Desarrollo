@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IPosts } from '../interfaces/i-posts';
@@ -12,6 +12,8 @@ import { PostsService } from '../services/posts.service';
 export class PostItemPendienteComponent implements OnInit {
 
   @Input() newpost: IPosts;
+  @Output() actualiza = new EventEmitter<IPosts>();
+
   postModificado: IPosts;
 
   newPostModificado: IPosts = {
@@ -46,11 +48,11 @@ export class PostItemPendienteComponent implements OnInit {
     console.log(this.newpost.id)
 
     this.postsService.modificarPost(this.newpost.id! ,this.newPostModificado).subscribe(
-      post => this.postModificado,
-      error => console.log(error)
+      post => {this.postModificado,
+      this.actualiza.emit(this.newPostModificado)}
     );
-    console.log(this.newPostModificado)
 
+    console.log(this.newPostModificado)
   }
 
   deletePost(){

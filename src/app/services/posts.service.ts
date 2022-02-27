@@ -13,7 +13,6 @@ import { IToken } from '../interfaces/i-token';
 export class PostsService {
 
   private postURL = 'http://localhost:8000/api/posts';
-  private loginURL = 'http://localhost:8000/api/login';
   private registerURL = 'http://localhost:8000/api/user';
 
   constructor(private http: HttpClient) { }
@@ -22,23 +21,6 @@ export class PostsService {
   getPosts(): Observable<IPosts[]> {
     return this.http.get<IPosts[]>(this.postURL);
   }
-
-  // Obtener todos los usuarios
-  /*getUsers(): Observable<IUsers[]> {
-    return this.http.get<IUsers[]>('posts');
-  }*/
-
-  /*getPostToken(token:IToken): Observable<string> {
-    let options= {
-      headers: new HttpHeaders().set('Authorization',localStorage.getItem('token'))
-    };
-    return this.http.post<tokenResponse>(this.loginURL, token).pipe(
-      catchError((resp: HttpErrorResponse) => throwError(`Error insertando post!. Código de servidor ${resp.status}. Mensaje: ${resp.message}`)),
-      map(resp => {
-        return resp.token;
-      })
-    )
-  }*/
 
   // Modificar post
   modificarPost(id: number, post: IPosts): Observable<IPosts>  {

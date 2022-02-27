@@ -17,20 +17,27 @@ export class PostsShowComponent implements OnInit {
   rol!: string | null;
   aux!: number ;
 
+  postsFiltrados: IPosts[] = [];
+
   constructor(private postsService: PostsService) { }
 
   ngOnInit(): void {
     this.postsService.getPosts()
     .subscribe(
-      posts => this.posts = posts,
+      post =>{
+        this.posts = post,
+        this.filtra()}
     );
-
-
 
     this.token = localStorage.getItem('token');
     this.idUser = localStorage.getItem('id');
     this.rol = localStorage.getItem('rol');
     //this.posts = this.postsService.getPosts();
+  }
+
+  filtra(){
+    this.postsFiltrados = this.posts.filter(element => element.ok == 1);
+    console.log(this.postsFiltrados)
   }
 
 }

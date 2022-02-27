@@ -29,7 +29,7 @@ export class PostAddComponent implements OnInit {
     title: "",
     image: "",
     description: "",
-    user_id: +this.idUser!,
+    user_id: 0,
     ok: 0
   }
 
@@ -42,23 +42,26 @@ export class PostAddComponent implements OnInit {
 
     this.token = localStorage.getItem('token');
     this.idUser  = localStorage.getItem('id');
-
+    this.aux = +this.idUser!;
+    this.newPost.user_id = this.aux;
   }
 
   addPost(){
+    console.log(this.newPost)
+
     this.postsService.addPost(this.newPost).subscribe(
-      post =>  this.posts.push(this.newPost),
-      error => console.log(error),
-      () => this.router.navigate(['/posts/blog'])
+      post =>  { this.posts.push(this.newPost),
+      this.router.navigate(['/posts/blog'])}
     );
 
     this.newPost = {
       title: "",
       image: "",
       description: "",
-      user_id: +this.idUser!,
+      user_id: 0,
       ok: 0
     };
+    console.log(this.newPost)
   }
 
   changeImage(fileInput: HTMLInputElement) {

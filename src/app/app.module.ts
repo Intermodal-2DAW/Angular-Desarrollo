@@ -19,6 +19,7 @@ import { PostAddComponent } from './post-add/post-add.component';
 import { PostDetailService } from './resolvers/post-detail.service';
 import { PostsPendientesComponent } from './posts-pendientes/posts-pendientes.component';
 import { PostItemPendienteComponent } from './post-item-pendiente/post-item-pendiente.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const APP_ROUTES: Route[] = [
   { path: 'posts', component: PostsHomeComponent },
@@ -60,7 +61,7 @@ const APP_ROUTES: Route[] = [
     HttpClientModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
-  providers: [Title],
+  providers: [Title,{provide: LocationStrategy, useClass: HashLocationStrategy} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
