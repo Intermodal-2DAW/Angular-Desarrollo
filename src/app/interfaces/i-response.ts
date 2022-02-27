@@ -1,5 +1,6 @@
 import { IPosts } from "../interfaces/i-posts";
 import { IUsers } from "./i-users";
+import { IComments } from "./i-comments";
 
 export interface PostResponse {
   post: IPosts;
@@ -17,4 +18,8 @@ export interface AuthResponse {
   id: string,
   token: string,
   rol: string
+}
+
+export interface CommentsResponse {
+  comments: IComments;
 }

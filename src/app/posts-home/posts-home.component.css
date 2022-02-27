@@ -1,8 +1,15 @@
-.bg-image{
-  background-image: url("https://i0.wp.com/www.mariajuliana.com/wp-content/uploads/2016/02/Benidorm.jpg?fit=1920%2C1080&ssl=1");
-  background-position: center;
-  min-height: 500px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+
+.zoom {
+  height: 300px; /* [1.1] Set it as per your need */
+  overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+/* [2] Transition property for smooth transformation of images */
+.zoom{
+  transition: transform .5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.zoom:hover{
+  transform: scale(1.25);
 }

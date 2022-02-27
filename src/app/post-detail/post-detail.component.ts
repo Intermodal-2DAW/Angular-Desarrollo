@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { IComments } from '../interfaces/i-comments';
 import { IPosts } from '../interfaces/i-posts'
+import { IUsers } from '../interfaces/i-users';
+import { CommentsService } from '../services/comments.service';
 import { PostsService } from '../services/posts.service';
 
 @Component({
@@ -16,11 +19,31 @@ export class PostDetailComponent implements OnInit {
   idUser!:  string | null;
   rol!: string | null;
   aux!: number ;
+  users: IUsers = {
+    name: "",
+    lastname: "",
+    login: "",
+    password: "",
+    email: ""
+  }
+
+  user: IUsers;
+
+  comment = {
+    id: 0,
+    content: "",
+    ranking: 0,
+    post_id: 0,
+    user_id: 0,
+    user_name: ""
+  }
+
+  comentario: string;
+  comments: IComments[] = [];
 
   muestraEliminar: string = "d-none";
-  botonEnd: string = "col-12";
 
-  constructor(private route: ActivatedRoute, private router: Router, private postsService: PostsService, private titleService: Title) { }
+  constructor(private route: ActivatedRoute, private router: Router, private postsService: PostsService, private commentsService: CommentsService, private titleService: Title) { }
 
   ngOnInit(): void {
     this.post = this.route.snapshot.data['post'];
@@ -29,25 +52,48 @@ export class PostDetailComponent implements OnInit {
     this.token = localStorage.getItem('token');
     this.idUser = localStorage.getItem('id');
     this.rol = localStorage.getItem('rol');
+    this.aux = +this.idUser!;
 
     if(this.rol == 'admin'){
       this.muestraEliminar = "d-inline";
-      this.botonEnd = "";
     }
 
     if(this.idUser == this.post.user_id.toString()){
       this.muestraEliminar = "d-inline";
-      this.botonEnd = "";
-
     }
 
-    console.log(this.post)
+    this.postsService.getUser(this.aux)
+    .subscribe(
+      user => {this.user = user,
+      console.log(this.user)}
+    )
 
-    /*const id = +this.route.snapshot.params['id'];
-    this.postsService.getPost(id).subscribe(
-      p => this.post = p
-    );*/
+    this.commentsService.getComments()
+    .subscribe(
+      comment =>
+        {
+        console.log(comment)
+        },
+        (error) => console.error(error),
+        () => console.log(this.comments)
+    );
 
+  }
+
+  publicaComentario(){
+    console.log(this.user)
+
+    this.comentario = this.comment.content;
+    console.log(this.comment.content)
+    this.comment.ranking = 3;
+    this.comment.user_id = this.aux;
+    this.comment.post_id = this.post.id!;
+
+    this.commentsService.addComment(this.comment).subscribe(
+      comment => this.comments.push(this.comment)
+    );
+
+    this.ngOnInit();
 
   }
 

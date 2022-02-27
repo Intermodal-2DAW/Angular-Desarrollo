@@ -36,8 +36,8 @@
                   <div class="invalid-feedback"> Se requiere de una contraseña</div>
               </div>
               <div class="col-sm-12">
-                  <label for="email" class="form-label">Correo electrónico</label>
-                  <input type="email" class="form-control" id="email" name="email" [(ngModel)]="newUser.email" placeholder="ejemplo@ejemplo.com">
+                  <label for="email" class="form-label">Correo electrónico<span class="text-danger"> *</span></label>
+                  <input type="email" class="form-control" id="email" name="email" [(ngModel)]="newUser.email" placeholder="ejemplo@ejemplo.com" required>
                   <div class="invalid-feedback"> Se requiere una direccion de correo valida</div>
               </div>
               <hr class="my-4">
@@ -46,7 +46,7 @@
                   <label class="form-check-label" for="newsletter">Registrarse al boletin de noticias para recibir informacion sobre actividades, etc.</label>
               </div>
               <div class="form-check">
-                  <input type="checkbox" class="form-check-input" name="condiciones" id="condiciones" required>
+                  <input type="checkbox" class="form-check-input" name="condiciones" id="condiciones" [(ngModel)]="checked" required>
                   <label class="form-check-label" for="condiciones">He leido y acepto las condiciones legales.<span class="text-danger"> *</span></label>
               </div>
               <button class="w-100 btn btn-primary btn-lg" type="submit" id="boton-formulario"  (click)="addUser()">Registrarse</button>

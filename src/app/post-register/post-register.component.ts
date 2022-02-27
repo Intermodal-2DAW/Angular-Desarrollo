@@ -20,7 +20,7 @@ export class PostRegisterComponent implements OnInit {
     email: ""
   }
 
-  crear:boolean = false;
+  checked: boolean = false;
 
   users: IUsers[] = [];
 
@@ -31,23 +31,48 @@ export class PostRegisterComponent implements OnInit {
 
   }
 
+  valida(){
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+      'use strict'
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll('.needs-validation')
+
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (e: any) {
+            if (!form.checkValidity()) {
+              e.preventDefault()
+              e.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
+  }
+
   addUser(){
+    this.valida();
     console.log(this.newUser)
 
-    this.postsService.addUser(this.newUser).subscribe(
-      user => {this.users.push(this.newUser),
-      this.router.navigate(['/posts'])}
-    );
+    if(this.checked){
+      this.postsService.addUser(this.newUser).subscribe(
+        user => {this.users.push(this.newUser),
+        this.router.navigate(['/posts'])}
+      );
 
-    this.newUser = {
-      name: "",
-      lastname: "",
-      login: "",
-      password: "",
-      email: ""
-    };
-
-    //console.log(this.users)
+      this.newUser = {
+        name: "",
+        lastname: "",
+        login: "",
+        password: "",
+        email: ""
+      };
+      this.checked = false;
+    }
 
   }
 

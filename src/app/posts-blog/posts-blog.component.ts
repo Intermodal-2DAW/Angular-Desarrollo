@@ -22,7 +22,6 @@ export class PostsBlogComponent implements OnInit {
 
     this.token = localStorage.getItem('token');
     this.idUser  = localStorage.getItem('id');
-    console.log(this.token)
 
     if(this.token != undefined){
       this.muestraAnadir = "d-inline";

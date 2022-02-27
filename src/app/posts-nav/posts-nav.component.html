@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-md navbar-light bg-none">
+<nav class="navbar navbar-expand-md navbar-light bg-light shadow">
   <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <img src="https://static.vecteezy.com/system/resources/previews/001/198/668/original/camera-png.png" alt="Logo-Salva" width="60">
@@ -10,12 +10,12 @@
       <div class="collapse navbar-collapse" id="mynavbar">
           <ul class="navbar-nav me-auto">
               <li class="nav-item fs-5 ms-2">
-                  <a class="nav-link active"[routerLink]="['/posts']"
+                  <a class="nav-link"[routerLink]="['/posts']"
                   [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">INICIO</a>
               </li>
               <li class="nav-item fs-5 ms-2">
                   <a class="nav-link" [routerLink]="['/posts/galeria']"
-                  [routerLinkActive]="['active']" >GALERIA</a>
+                  [routerLinkActive]="['active']" > GALERIA</a>
               </li>
               <li class="nav-item fs-5 ms-2">
                 <a class="nav-link" [routerLink]="['/posts/blog']"

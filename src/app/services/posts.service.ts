@@ -13,7 +13,9 @@ import { IToken } from '../interfaces/i-token';
 export class PostsService {
 
   private postURL = 'http://localhost:8000/api/posts';
+  //private postURL = 'https://admindb.smira.daw:4444/api/posts';
   private registerURL = 'http://localhost:8000/api/user';
+  //private registerURL = 'https://admindb.smira.daw:4444/api/user';
 
   constructor(private http: HttpClient) { }
 
@@ -62,6 +64,11 @@ export class PostsService {
         return resp.user;
       })
     )
+  }
+
+  // Obtener un usuario concreto por id
+  getUser(id: number): Observable<IUsers> {
+    return this.http.get<IUsers>(this.registerURL +`/${id}`);
   }
 
 }

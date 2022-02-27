@@ -36,6 +36,8 @@ export class PostAddComponent implements OnInit {
     this.aux = +this.idUser!;
     this.newPost.user_id = this.aux;
     console.log(this.aux)
+
+
   }
 
   addBlog(){
