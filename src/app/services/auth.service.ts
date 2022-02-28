@@ -12,8 +12,7 @@ import { IToken } from '../interfaces/i-token';
 })
 export class AuthService {
 
-  private loginURL = 'http://localhost:8000/api/login';
-  //private loginURL = 'https://smira.daw:555/api/login';
+  private loginURL = 'https://smira.daw:5555/api/login';
 
   constructor(private http: HttpClient) { }
 
