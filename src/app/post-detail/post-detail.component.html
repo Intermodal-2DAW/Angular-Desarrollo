@@ -3,7 +3,97 @@
   <app-posts-nav></app-posts-nav>
 </div>
 <!-- Contenido -->
-<div class="container contenido mt-4">
+<div class="container-fluid contenido mt-4">
+  <div class="row">
+    <div class="col-12 col-md-5">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="card h-100 rounded mb-5 w-75 mx-auto shadow">
+          <img class="card-img-top" [src]="post.image">
+          <div class="card-body">
+            <p class="fs-2 fw-light card-title ">{{post.title | titlecase}}</p>
+            <p class="card-text pt-3">{{post.description}}</p>
+          </div>
+          <div class="text-end p-1" [class]="muestraEliminar">
+              <button class="btn btn-danger w-100" (click)="deletePost()">Delete</button>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-7">
+      <div class="container mt-5 mb-5 ">
+        <div class="d-flex justify-content-center row">
+            <div class="d-flex flex-column">
+                <div class="d-flex flex-row align-items-center text-left p-2 bg-white border-bottom px-4">
+
+                    <div class="d-flex flex-column-reverse flex-grow-0 align-items-center ml-1"></div>
+                    <div class="d-flex flex-column ml-3">
+                        <div class="d-flex flex-row">
+                            <h5>Sección de comentarios</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white  px-4" >
+                  <div  class="d-flex flex-row  row mt-4 mb-4 align-items-center justify-content-between" [class]="desabilitaComentario">
+                    <div class="wrapper col-12 p-2 mx-3 d-flex">
+                      <p class="fw-light fs-5 pt-2 pe-2">Valoración del post (1-5):</p>
+                      <div class="rating">
+                        <input type="radio" id="star5" name="rating" value="5"/><label for="star5" (click)="changeRating(5)"></label>
+                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" (click)="changeRating(4)"></label>
+                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" (click)="changeRating(3)"></label>
+                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" (click)="changeRating(2)"></label>
+                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" (click)="changeRating(1)"></label>
+                      </div>
+                    </div>
+                    <div class="col-10">
+                      <input type="text" class="form-control mx-3" placeholder="Añade un comentario" [(ngModel)]="comentario">
+                    </div>
+
+
+                    <div class="col-2">
+                      <button class="btn btn-primary" type="button" (click)="publicaComentario()">Comentar</button>
+                    </div>
+                  </div>
+
+                  <div class="overflow-scroll " style="height: 40vh;">
+                    <div *ngFor="let com of comments">
+                      <div class="mb-4 border-bottom shadow-sm  p-2" *ngIf="com.post_id == post.id">
+                        <div class="row">
+                          <div class="col-8 d-block">
+                            <div class="d-flex flex-row align-items-center ">
+                              <h5 class="mr-2">{{ com.user_name }} &nbsp;&nbsp; <span *ngFor="let i of com.ranking | enumerate"> <i class="bi bi-star-fill amarillo"></i></span></h5>
+                            </div>
+                            <div>
+                              <span>{{ com.content }}</span>
+                            </div>
+                          </div>
+                          <div class="col-4 d-flex align-items-center justify-content-end" *ngIf="com.user_id == this.aux || rol == 'admin' ">
+                            <div class="text-end">
+                              <button class="btn bi bi-pencil me-2"></button>
+                              <button class="btn bi bi-trash3" (click)="eliminarComentario(com.id || 0)"></button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-2 text-end">
+                  <button class="btn btn-secondary m-2 text-white" (click)="goBack()">Volver</button>
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+
+    </div>
+  </div>
+
+
+</div>
+
+<!-- <div class="container-xl contenido mt-4">
   <div class="card h-100 rounded mb-5" style="width: 100%;">
     <img class="card-img-top" [src]="post.image">
     <div class="card-body">
@@ -13,48 +103,5 @@
     <div class="text-end" [class]="muestraEliminar">
         <button class="btn btn-danger m-2" (click)="deletePost()">Delete</button>
     </div>
-  </div>
-
-  <div class="container mt-5 mb-5">
-    <div class="d-flex justify-content-center row">
-        <div class="d-flex flex-column col-md-8">
-            <div class="d-flex flex-row align-items-center text-left p-2 bg-white border-bottom px-4">
-
-                <div class="d-flex flex-column-reverse flex-grow-0 align-items-center ml-1"></div>
-                <div class="d-flex flex-column ml-3">
-                    <div class="d-flex flex-row">
-                        <h5>Sección de comentarios</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white p-2 px-4">
-                <div class="d-flex flex-row mt-4 mb-4">
-                  <input type="text" class="form-control mx-3" placeholder="Añade un comentario" [(ngModel)]="comentario">
-                  <button class="btn btn-primary" type="button" (click)="publicaComentario()">Comentar</button>
-                </div>
-
-                <div class="mb-4" *ngFor="let com of comments">
-                    <div class="d-flex flex-row align-items-center ">
-                      <h5 class="mr-2">Nombre</h5> <span class="mx-4">estrellas</span>
-                    </div>
-                    <div>
-                      <span>{{ com.content }}</span>
-                    </div>
-                </div>
-
-
-
-            </div>
-            <div class="mt-2 text-end">
-              <button class="btn btn-secondary m-2 text-white" (click)="goBack()">Volver</button>
-            </div>
-        </div>
-
-    </div>
-
-</div>
-
-
-
-
+</div> -->
 

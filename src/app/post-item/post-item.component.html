@@ -1,6 +1,6 @@
-<div class="col mb-4">
+<div class="col mb-5 ">
   <div class="card h-100 rounded" style="width: 100%;" *ngIf="newpost.ok == 1">
-    <img class="card-img-top" [src]="newpost.image">
+    <img class="card-img-top imagen" style="object-fit: cover; height: 300px; " [src]="newpost.image"  [routerLink]="['/posts/blog', newpost.id]">
     <div class="card-body">
       <p class="fs-4 card-title">{{newpost.title | titlecase}}</p>
       <p class="card-text pt-3">{{newpost.description}}</p>

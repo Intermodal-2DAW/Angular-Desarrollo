@@ -23,3 +23,9 @@ export interface AuthResponse {
 export interface CommentsResponse {
   comments: IComments;
 }
+
+export interface OkResponse {
+  ok: boolean;
+  ranking: IComments;
+  error?:string; // Mensaje de error opcional si algo falla
+}

@@ -1,5 +1,5 @@
 export interface IComments {
-  id: number;
+  id?: number;
   content: string;
   ranking: number;
   post_id: number;

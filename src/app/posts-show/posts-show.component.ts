@@ -26,6 +26,7 @@ export class PostsShowComponent implements OnInit {
     .subscribe(
       post =>{
         this.posts = post,
+        console.log(this.posts),
         this.filtra()}
     );
 
@@ -36,7 +37,8 @@ export class PostsShowComponent implements OnInit {
   }
 
   filtra(){
-    this.postsFiltrados = this.posts.filter(element => element.ok == 1);
+    console.log(this.posts),
+    this.postsFiltrados = this.posts.filter(element => element.ok == 1),
     console.log(this.postsFiltrados)
   }
 

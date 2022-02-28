@@ -20,6 +20,8 @@ import { PostDetailService } from './resolvers/post-detail.service';
 import { PostsPendientesComponent } from './posts-pendientes/posts-pendientes.component';
 import { PostItemPendienteComponent } from './post-item-pendiente/post-item-pendiente.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { StarRatingComponent } from './star-rating/star-rating.component';
+import { PipeArrayPipe } from './pipes/pipe-array.pipe';
 
 const APP_ROUTES: Route[] = [
   { path: 'posts', component: PostsHomeComponent },
@@ -54,6 +56,8 @@ const APP_ROUTES: Route[] = [
     PostAddComponent,
     PostsPendientesComponent,
     PostItemPendienteComponent,
+    StarRatingComponent,
+    PipeArrayPipe,
   ],
   imports: [
     BrowserModule,

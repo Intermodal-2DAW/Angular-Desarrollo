@@ -7,6 +7,7 @@ import { IUsers } from '../interfaces/i-users';
 import { CommentsService } from '../services/comments.service';
 import { PostsService } from '../services/posts.service';
 
+
 @Component({
   selector: 'app-post-detail',
   templateUrl: './post-detail.component.html',
@@ -19,7 +20,10 @@ export class PostDetailComponent implements OnInit {
   idUser!:  string | null;
   rol!: string | null;
   aux!: number ;
-  users: IUsers = {
+
+  rating : number;
+
+  user: IUsers = {
     name: "",
     lastname: "",
     login: "",
@@ -27,10 +31,9 @@ export class PostDetailComponent implements OnInit {
     email: ""
   }
 
-  user: IUsers;
+  //user: IUsers;
 
   comment = {
-    id: 0,
     content: "",
     ranking: 0,
     post_id: 0,
@@ -38,9 +41,12 @@ export class PostDetailComponent implements OnInit {
     user_name: ""
   }
 
+
   comentario: string;
   comments: IComments[] = [];
 
+  desabilitaComentario: string = "d-block";
+  desabilitaIconos: string = "d-none";
   muestraEliminar: string = "d-none";
 
   constructor(private route: ActivatedRoute, private router: Router, private postsService: PostsService, private commentsService: CommentsService, private titleService: Title) { }
@@ -48,11 +54,19 @@ export class PostDetailComponent implements OnInit {
   ngOnInit(): void {
     this.post = this.route.snapshot.data['post'];
     this.titleService.setTitle(this.post.title);
-
     this.token = localStorage.getItem('token');
     this.idUser = localStorage.getItem('id');
     this.rol = localStorage.getItem('rol');
     this.aux = +this.idUser!;
+
+
+    if(this.token != undefined){
+      this.desabilitaComentario = "d-block";
+
+      this.aux = +this.idUser!;
+    }else{
+      this.desabilitaComentario = "d-none";
+    }
 
     if(this.rol == 'admin'){
       this.muestraEliminar = "d-inline";
@@ -60,6 +74,10 @@ export class PostDetailComponent implements OnInit {
 
     if(this.idUser == this.post.user_id.toString()){
       this.muestraEliminar = "d-inline";
+    }
+
+    if(this.comment.user_id == +this.idUser!){
+      this.desabilitaIconos = "d-block";
     }
 
     this.postsService.getUser(this.aux)
@@ -70,30 +88,30 @@ export class PostDetailComponent implements OnInit {
 
     this.commentsService.getComments()
     .subscribe(
-      comment =>
-        {
-        console.log(comment)
-        },
-        (error) => console.error(error),
-        () => console.log(this.comments)
+      comment => {this.comments = comment,
+      () => console.log(this.comments)}
     );
 
   }
 
   publicaComentario(){
-    console.log(this.user)
 
-    this.comentario = this.comment.content;
+    this.comment.content = this.comentario;
     console.log(this.comment.content)
-    this.comment.ranking = 3;
+    this.comment.ranking = this.rating;
     this.comment.user_id = this.aux;
     this.comment.post_id = this.post.id!;
+    this.comment.user_name = this.user.login;
+    console.log(this.user.login)
+
+    console.log(this.comment)
 
     this.commentsService.addComment(this.comment).subscribe(
-      comment => this.comments.push(this.comment)
+      comment => {this.comments.push(this.comment),
+      this.ngOnInit(),
+      this.comentario = "",
+      this.rating = 0}
     );
-
-    this.ngOnInit();
 
   }
 
@@ -106,4 +124,35 @@ export class PostDetailComponent implements OnInit {
       () =>this.router.navigate(['/posts/blog'])
     );
   }
+
+  eliminarComentario(id:number){
+    this.commentsService.deleteComment(id || 0).subscribe(
+      // () =>this.router.navigate(['/posts/blog'])
+      () => this.ngOnInit()
+    );
+  }
+
+  changeRating(id: number){
+    this.rating = id;
+
+    console.log(this.rating);
+  }
+
+  // filtra(){
+  //   this.rankings = this.comments.filter(element => element.ranking),
+  //   console.log(this.rankings)
+  // }
+
+  /*setRating(ranking: number) {
+        error => console.error(error));
+    }
+  }
+
+  changeRating(rating: number) {
+    this.productsService.changeRating(this.product.id, rating).subscribe(
+      ok => this.product.rating = rating,
+      error => console.error(error));
+  }*/
+
+
 }

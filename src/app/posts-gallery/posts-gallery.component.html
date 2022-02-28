@@ -12,7 +12,7 @@
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-4 g-2">
           <!--Cada imagen-->
           <div class="col" *ngFor="let item of posts">
-              <img class="card-img-top" class="imagen" [src]="item.image" height="100%" width="100%" [routerLink]="['/posts/blog', item.id]">
+              <img class="card-img-top" href="" class="imagen" [src]="item.image" height="100%" width="100%" [routerLink]="['/posts/blog', item.id]">
           </div>
       </div>
   </div>

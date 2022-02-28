@@ -4,7 +4,7 @@ import { map, catchError, retry } from 'rxjs/operators';
 import { IPosts } from '../interfaces/i-posts';
 import { IUsers } from '../interfaces/i-users';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { PostResponse, UserResponse, CommentsResponse, tokenResponse } from '../interfaces/i-response';
+import { PostResponse, UserResponse, CommentsResponse, OkResponse, tokenResponse } from '../interfaces/i-response';
 import { IToken } from '../interfaces/i-token';
 import { IComments } from '../interfaces/i-comments';
 
@@ -19,15 +19,8 @@ export class CommentsService {
   constructor(private http: HttpClient) { }
 
   // Obtener todos los comentarios
-  getComments(): Observable<CommentsResponse> {
-    return this.http.get<CommentsResponse>(this.commentsURL)
-    .pipe(
-      map(
-        res => {
-          return res;
-        }
-      )
-    )
+  getComments(): Observable<IComments[]> {
+    return this.http.get<IComments[]>(this.commentsURL);
   }
 
   // Añadir nuevo comentario
@@ -40,6 +33,20 @@ export class CommentsService {
       })
     )
   }
+
+  deleteComment(comment: number): Observable<void> {
+    return this.http.delete<void>(`${this.commentsURL}/${comment}`);
+  }
+
+  setRating(id: number, ranking: IComments): Observable<IComments> {
+    return this.http.put<OkResponse>(`${this.commentsURL}/${id}`,{ranking})
+    .pipe(
+      map(resp => resp.ranking),
+      catchError((resp: HttpErrorResponse) => throwError(`Error cambiando puntuación!. Código de servidor: ${resp.status}. Mensaje: ${resp.message}`))
+
+    );
+  }
+
 
 
 }
