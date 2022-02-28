@@ -12,10 +12,8 @@ import { IToken } from '../interfaces/i-token';
 })
 export class PostsService {
 
-  private postURL = 'http://localhost:8000/api/posts';
-  //private postURL = 'https://smira.daw:555/api/posts';
-  private registerURL = 'http://localhost:8000/api/user';
-  //private registerURL = 'https://smira.daw:555/api/user';
+  private postURL = 'https://smira.daw:5555/api/posts';
+  private registerURL = 'https://smira.daw:5555/api/user';
 
   constructor(private http: HttpClient) { }
 
