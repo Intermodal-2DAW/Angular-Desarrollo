@@ -13,8 +13,8 @@ import { IComments } from '../interfaces/i-comments';
 })
 export class CommentsService {
 
-  private commentsURL = 'http://localhost:8000/api/comments';
-  //private commentsURL = 'https://smira.daw:555/api/comments';
+ 
+  private commentsURL = 'https://smira.daw:5555/api/comments';
 
   constructor(private http: HttpClient) { }
 
